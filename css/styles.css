@@ -15,13 +15,27 @@
 }
 
 body {
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 62.5%;
 }
 
 p {
   font-size: 1.4rem;
 }
+
+a:visited,
+a:link {
+  text-decoration: none;
+  color: forestgreen;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: gold;
+  background-color: #0028ff;
+}
+
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -67,7 +81,7 @@ p {
   font-size: 1.6rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 30rem);
+  grid-template-rows: repeat(5, 5rem);
 
   gap: 1rem;
   border-radius: 2px;
