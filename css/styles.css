@@ -15,8 +15,12 @@
 }
 
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-size: 62.5%;
+}
+
+p {
+  font-size: 1.4rem;
 }
 .main-header {
   display: flex;
@@ -111,4 +115,12 @@ body {
 .el-10 {
   grid-column: 1 / span 3;
   background-color: lightcoral;
+}
+
+.btn {
+  margin: 1rem auto;
+  background-color: gold;
+  width: 20rem;
+  height: 4rem;
+  border: none;
 }
