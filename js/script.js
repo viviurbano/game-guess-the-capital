@@ -1,13 +1,6 @@
 'use strict';
 
-const calculator = document.querySelector('.el-1');
-
-console.log(`${calculator}`);
-
-calculator.addEventListener('click', function () {
-  console.log(`clicou`);
-});
-
+// document.addEventListener('DOMContentLoaded', () => {
 const listCountryCode = [
   '004',
   '008',
@@ -259,6 +252,21 @@ const listCountryCode = [
   '716',
   '248',
 ];
+
+let contryDrawn = document.getElementById('country--drawn').innerHTML;
+const countryChosen = document.getElementsByClassName('capital-chosen--item');
+
+//verifica o país sorteado x capital escolhida
+// FIXME mudar o país para comparar com a capital
+
+for (let i = 0; i < countryChosen.length; i++) {
+  countryChosen[i].addEventListener('click', function () {
+    if (countryChosen[i].innerHTML === contryDrawn) {
+      console.log(`${countryChosen[i].innerHTML}`);
+    }
+  });
+}
+
 const code =
   listCountryCode[Math.floor(Math.random() * listCountryCode.length)];
 
@@ -285,8 +293,23 @@ const userAction = async () => {
   const countryFlag = myJson[0].flag;
 
   console.log(`
-  country: ${countryName}, 
-  capital: ${countryCapital}, 
-  bandeira: ${countryFlag}, 
-  country code: ${code}`);
+    country: ${countryName}, 
+    capital: ${countryCapital}, 
+    bandeira: ${countryFlag}, 
+    country code: ${code}`);
+
+  // funciona para enviar, mas acho que tem forma melhor
+  document.getElementById('country--drawn').innerHTML = countryName;
+
+  // contryDrawn = countryName;
+  return countryName;
 };
+const bandeira = userAction();
+console.log(`${bandeira}`);
+
+// });
+
+// executa assim que o DOM fica pronto TADAHHH -- Apenas exemplo
+document.addEventListener('DOMContentLoaded', () => {
+  console.log(`pronto, chefia.. Toma aí seu DOM.`);
+});
