@@ -1,6 +1,5 @@
 'use strict';
 
-// document.addEventListener('DOMContentLoaded', () => {
 const listCountryCode = [
   '004',
   '008',
@@ -253,63 +252,56 @@ const listCountryCode = [
   '248',
 ];
 
-let contryDrawn = document.getElementById('country--drawn').innerHTML;
-const countryChosen = document.getElementsByClassName('capital-chosen--item');
+const contryDrawn = document.querySelector('.country--drawn');
+// retorna um NodeList
+const btnCapital = document.querySelectorAll('.capital-chosen--item');
 
-//verifica o país sorteado x capital escolhida
-// FIXME mudar o país para comparar com a capital
+// ARRAY COM 4 NÚMEROS ALEATORIOS
+const arrayRandom = Array.from(
+  { length: 4 },
+  () => listCountryCode[Math.floor(Math.random() * listCountryCode.length + 1)]
+);
+console.log(arrayRandom);
 
-for (let i = 0; i < countryChosen.length; i++) {
-  countryChosen[i].addEventListener('click', function () {
-    if (countryChosen[i].innerHTML === contryDrawn) {
-      console.log(`${countryChosen[i].innerHTML}`);
-    }
-  });
-}
-
-const code =
-  listCountryCode[Math.floor(Math.random() * listCountryCode.length)];
-
-const userAction = async () => {
-  // const country = await fetch("https://restcountries.com/v3.1/name/brazil/");
-  // const country = await fetch('https://restcountries.com/v3.1/all');
-  // const country = await fetch(
-  //   'https://restcountries.com/v3.1/alpha?codes=076'
-  // );
-
-  const country = await fetch(
-    'https://restcountries.com/v3.1/alpha?codes=' + code
+const sorteioPais = async () => {
+  const countryDrawn = await fetch(
+    'https://restcountries.com/v3.1/alpha?codes=' + arrayRandom[0]
   );
 
-  const myJson = await country.json(); //extract JSON - country data
-  // do something with myJson
-  // console.log(myJson);
-  // console.log('##### resposta: ', country);
-  // console.log(myJson[0].capital);
-  // console.log(myJson[0].flag);
+  // ARRAY DE PAÍSES
+  const arrCountriesDrawn = await fetch(
+    'https://restcountries.com/v3.1/alpha?codes=' +
+      arrayRandom[0] +
+      ',' +
+      arrayRandom[1] +
+      ',' +
+      arrayRandom[2] +
+      ',' +
+      arrayRandom[3]
+  );
 
-  const countryName = myJson[0].name.common;
+  //JSON do país sorteado
+  const myJson = await countryDrawn.json();
+  const countryDrawName = myJson[0].name.common;
   const countryCapital = myJson[0].capital[0];
-  const countryFlag = myJson[0].flag;
+  const countryFlag = myJson[0].flags.svg;
 
-  console.log(`
-    country: ${countryName}, 
-    capital: ${countryCapital}, 
-    bandeira: ${countryFlag}, 
-    country code: ${code}`);
+  //JSON com 4 países sorteado
+  const myJson2 = await arrCountriesDrawn.json();
 
-  // funciona para enviar, mas acho que tem forma melhor
-  document.getElementById('country--drawn').innerHTML = countryName;
+  for (let i = 0; i < myJson2.length; i++) {
+    btnCapital[i].textContent = myJson2[i].capital;
+  }
 
-  // contryDrawn = countryName;
-  return countryName;
+  // envia o país sorteado para o HTML
+  contryDrawn.textContent = countryDrawName;
+
+  for (let i = 0; i < btnCapital.length; i++) {
+    btnCapital[i].addEventListener('click', function () {
+      if (btnCapital[i].textContent === countryCapital) {
+        console.log(`ACERTOOU! É ${btnCapital[i].textContent}`);
+      } else console.log(`ERRROU. Não é ${btnCapital[i].textContent}`);
+    });
+  }
 };
-const bandeira = userAction();
-console.log(`${bandeira}`);
-
-// });
-
-// executa assim que o DOM fica pronto TADAHHH -- Apenas exemplo
-document.addEventListener('DOMContentLoaded', () => {
-  console.log(`pronto, chefia.. Toma aí seu DOM.`);
-});
+sorteioPais();

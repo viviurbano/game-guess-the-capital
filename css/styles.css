@@ -147,32 +147,25 @@ body {
   background-color: #f26419;
   border-radius: 0.2rem;
   padding: 0.1rem 2rem;
-
   /* width: 50rem; */
-
   letter-spacing: 0.3rem;
 }
-
 .capital-chosen {
   display: grid;
   grid-template-columns: repeat(2, 20rem);
   justify-content: space-between;
   grid-row-gap: 2rem;
-
   margin: 0 16rem 3rem;
 }
-
 .capital-chosen--item,
 .capital-chosen--item {
   display: flex;
   justify-content: center;
   align-items: center;
-
   text-decoration: none;
   background-color: #86bbd8a2;
   height: 4rem;
   width: 20rem;
-
   color: #fff;
   font-size: 2rem;
 }
