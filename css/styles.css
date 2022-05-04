@@ -155,9 +155,9 @@ body {
   grid-template-columns: repeat(2, 20rem);
   justify-content: space-between;
   grid-row-gap: 2rem;
-  margin: 0 16rem 3rem;
+  margin: 2rem 16rem;
 }
-.capital-chosen--item,
+
 .capital-chosen--item {
   display: flex;
   justify-content: center;
@@ -177,4 +177,55 @@ body {
 .capital-chosen--item:link,
 .capital-chosen--item:visited {
   background-color: red;
+}
+.score {
+  font-size: 2rem;
+  background-color: rgba(255, 166, 0, 0.894);
+  display: grid;
+  flex-direction: column;
+  justify-content: center;
+}
+.score span {
+  display: inline;
+  /* background-color: green; */
+  margin-left: 10px;
+}
+/* lv - ha */
+.next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+.btn-next {
+  /* border: none; */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: gray;
+  border-radius: 2px;
+}
+.btn-next:active,
+.btn-next:hover {
+  background-color: green;
+  color: #fff;
+}
+
+.label-score {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 1.5rem;
+}
+.right {
+  display: inline-block;
+  margin-right: 6rem;
+}
+.wrong {
+  display: inline-block;
+  /* margin-left: 2rem; */
 }

@@ -253,17 +253,18 @@ const listCountryCode = [
 ];
 
 const contryDrawn = document.querySelector('.country--drawn');
-// retorna um NodeList
-const btnCapital = document.querySelectorAll('.capital-chosen--item');
-
-// ARRAY COM 4 NÚMEROS ALEATORIOS
-const arrayRandom = Array.from(
-  { length: 4 },
-  () => listCountryCode[Math.floor(Math.random() * listCountryCode.length + 1)]
-);
-console.log(arrayRandom);
+const btnCapital = document.querySelectorAll('.capital-chosen--item'); // retorna um NodeList
+const btnNext = document.querySelector('.btn-next');
+let upPointScore = Number(document.querySelector('.right').textContent);
+let downPointScore = Number(document.querySelector('.wrong').textContent);
 
 const sorteioPais = async () => {
+  const arrayRandom = Array.from(
+    { length: 4 },
+    () =>
+      listCountryCode[Math.floor(Math.random() * listCountryCode.length + 1)]
+  );
+
   const countryDrawn = await fetch(
     'https://restcountries.com/v3.1/alpha?codes=' + arrayRandom[0]
   );
@@ -299,9 +300,22 @@ const sorteioPais = async () => {
   for (let i = 0; i < btnCapital.length; i++) {
     btnCapital[i].addEventListener('click', function () {
       if (btnCapital[i].textContent === countryCapital) {
+        document.querySelector('body').style.backgroundColor = '#60b347';
+        upPointScore++;
+        document.querySelector('.right').textContent = upPointScore;
         console.log(`ACERTOOU! É ${btnCapital[i].textContent}`);
-      } else console.log(`ERRROU. Não é ${btnCapital[i].textContent}`);
+      } else {
+        console.log(`ERRROU. Não é ${btnCapital[i].textContent}`);
+        downPointScore++;
+        document.querySelector('.wrong').textContent = downPointScore;
+      }
     });
   }
+  nextCountry();
 };
 sorteioPais();
+
+btnNext.addEventListener('click', function () {
+  sorteioPais();
+  document.querySelector('body').style.backgroundColor = '#000';
+});
