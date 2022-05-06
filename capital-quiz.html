@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Api Testes</title>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <img src="img/logo-dev.svg" class="logo" alt="" />
+      <nav class="nav">
+        <a href="index.html" target="_blank"" class="btn">home</a>
+        <a href="#" class="btn">about me</a>
+        <a href="#" class="btn">services</a>
+        <a href="#" class="btn">blog</a>
+        <a href="#" class="btn">contact</a>
+      </nav>
+    </header>
+    <main>
+      <div class="country">
+        <p>Guess the capital</p>
+        <div class="country--drawn" id="country--drawn"></div>
+        <img
+          src="https://flagcdn.com/cw.svg"
+          id="flag"
+          class="flag"
+          alt="flag of the country drawn"
+        />
+      </div>
+
+      <div class="capital-chosen">
+        <button type="button" class="capital-chosen--item">Capital 1</button>
+        <button type="button" class="capital-chosen--item">Capital 2</button>
+        <button type="button" class="capital-chosen--item">Capital 3</button>
+        <button type="button" class="capital-chosen--item">Capital 4</button>
+      </div>
+
+      <div class="next">
+        <button type="button" class="btn-next">Next country</button>
+      </div>
+      <div class="score">
+        <p class="label-score">🚀 Score:</p>
+        <p>✅<span class="right">0</span> ⛔️<span class="wrong">0</span></p>
+      </div>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

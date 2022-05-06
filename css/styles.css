@@ -20,24 +20,6 @@ body {
   background-color: #000;
   color: #fff;
 }
-
-p {
-  font-size: 1.4rem;
-}
-
-a:visited,
-a:link {
-  text-decoration: none;
-  color: forestgreen;
-}
-
-a:hover,
-a:active {
-  text-decoration: none;
-  color: gold;
-  background-color: #0028ff;
-}
-
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -47,7 +29,7 @@ a:active {
 .logo {
   width: 3.5rem;
 }
-.soon {
+.comming-soon {
   width: 2rem;
 }
 .btn:link,
@@ -85,6 +67,7 @@ a:active {
   border-radius: 0.1rem;
   font-size: 1.5rem;
   color: #fff;
+  background-color: #259c48;
 }
 .el:link,
 .el:visited {
@@ -130,7 +113,6 @@ a:active {
   grid-area: i;
   background-color: #f26419;
 }
-
 .el-10 {
   grid-area: j;
   background-color: #f26419;
@@ -143,11 +125,109 @@ a:active {
   grid-area: l;
   background-color: #86bbd8;
 }
+#flag {
+  width: 4.5rem;
+}
+.country {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  font-size: 2rem;
+  align-items: center;
+  gap: 1rem;
 
-.btn {
-  margin: 1rem auto;
-  background-color: gold;
-  width: 20rem;
+  background-color: #86bbd8;
+  height: 10rem;
+  margin: 0 16rem;
+  border-radius: 0.1rem;
+}
+.country--drawn {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: #f26419;
+  border-radius: 0.2rem;
+  /* width: 50rem; */
+  letter-spacing: 0.3rem;
+  padding: 0 3rem;
+}
+.capital-chosen {
+  display: grid;
+  grid-template-columns: repeat(2, 20rem);
+  justify-content: space-between;
+  grid-row-gap: 2rem;
+  margin: 2rem 16rem;
+}
+
+.capital-chosen--item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: #86bbd8a2;
   height: 4rem;
-  border: none;
+  width: 20rem;
+  color: #fff;
+  font-size: 2rem;
+}
+.capital-chosen--item:hover,
+.capital-chosen--item:active {
+  background-color: #ffd700;
+  color: #0028ff;
+}
+.capital-chosen--item:link,
+.capital-chosen--item:visited {
+  background-color: red;
+}
+.score {
+  font-size: 2rem;
+  background-color: rgba(255, 166, 0, 0.894);
+  display: grid;
+  flex-direction: column;
+  justify-content: center;
+}
+.score span {
+  display: inline;
+  /* background-color: green; */
+  margin-left: 10px;
+}
+/* lv - ha */
+.next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+.btn-next {
+  /* border: none; */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: gray;
+  border-radius: 2px;
+}
+.btn-next:active,
+.btn-next:hover {
+  background-color: green;
+  color: #fff;
+}
+
+.label-score {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 1.5rem;
+}
+.right {
+  display: inline-block;
+  margin-right: 6rem;
+}
+.wrong {
+  display: inline-block;
+  /* margin-left: 2rem; */
 }

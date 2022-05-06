@@ -1,13 +1,5 @@
 'use strict';
 
-const calculator = document.querySelector('.el-1');
-
-console.log(`${calculator}`);
-
-calculator.addEventListener('click', function () {
-  console.log(`clicou`);
-});
-
 const listCountryCode = [
   '004',
   '008',
@@ -259,34 +251,79 @@ const listCountryCode = [
   '716',
   '248',
 ];
-const code =
-  listCountryCode[Math.floor(Math.random() * listCountryCode.length)];
 
-const userAction = async () => {
-  // const country = await fetch("https://restcountries.com/v3.1/name/brazil/");
-  // const country = await fetch('https://restcountries.com/v3.1/all');
-  // const country = await fetch(
-  //   'https://restcountries.com/v3.1/alpha?codes=076'
-  // );
+const contryDrawn = document.querySelector('.country--drawn');
+const btnCapital = document.querySelectorAll('.capital-chosen--item'); // retorna um NodeList
+const btnNext = document.querySelector('.btn-next');
 
-  const country = await fetch(
-    'https://restcountries.com/v3.1/alpha?codes=' + code
+let upPointScore = Number(document.querySelector('.right').textContent);
+let downPointScore = Number(document.querySelector('.wrong').textContent);
+
+const sorteioPais = async () => {
+  const arrayRandom = Array.from(
+    { length: 4 },
+    () =>
+      listCountryCode[Math.floor(Math.random() * listCountryCode.length + 1)]
   );
 
-  const myJson = await country.json(); //extract JSON - country data
-  // do something with myJson
-  // console.log(myJson);
-  // console.log('##### resposta: ', country);
-  // console.log(myJson[0].capital);
-  // console.log(myJson[0].flag);
+  const countryDrawn = await fetch(
+    'https://restcountries.com/v3.1/alpha?codes=' + arrayRandom[0]
+  );
 
-  const countryName = myJson[0].name.common;
+  // ARRAY DE PAÍSES
+  const arrCountriesDrawn = await fetch(
+    'https://restcountries.com/v3.1/alpha?codes=' +
+      arrayRandom[0] +
+      ',' +
+      arrayRandom[1] +
+      ',' +
+      arrayRandom[2] +
+      ',' +
+      arrayRandom[3]
+  );
+
+  //JSON do país sorteado
+  const myJson = await countryDrawn.json();
+  const countryDrawName = myJson[0].name.common;
   const countryCapital = myJson[0].capital[0];
-  const countryFlag = myJson[0].flag;
+  const countryFlag = myJson[0].flags.svg;
 
-  console.log(`
-  country: ${countryName}, 
-  capital: ${countryCapital}, 
-  bandeira: ${countryFlag}, 
-  country code: ${code}`);
+  document.getElementById('flag').src = countryFlag;
+
+  //JSON com 4 países sorteados
+  const myJson2 = await arrCountriesDrawn.json();
+
+  for (let i = 0; i < myJson2.length; i++) {
+    btnCapital[i].textContent = myJson2[i].capital;
+  }
+  // envia o país sorteado para o HTML
+  contryDrawn.textContent = countryDrawName;
+
+  for (let i = 0; i < btnCapital.length; i++) {
+    btnCapital[i].addEventListener('click', function () {
+      if (btnCapital[i].textContent === countryCapital) {
+        rightPoint();
+      } else {
+        wrongPoint();
+      }
+    });
+  }
 };
+sorteioPais();
+
+const rightPoint = function () {
+  document.querySelector('body').style.backgroundColor = '#60b347';
+  upPointScore++;
+  document.querySelector('.right').textContent = upPointScore;
+};
+
+const wrongPoint = function () {
+  document.querySelector('body').style.backgroundColor = '#F70000';
+
+  document.querySelector('.wrong').textContent = downPointScore;
+};
+
+const nextCountry = btnNext.addEventListener('click', function () {
+  document.querySelector('body').style.backgroundColor = '#000';
+  sorteioPais();
+});
