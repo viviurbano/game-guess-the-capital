@@ -255,6 +255,7 @@ const listCountryCode = [
 const contryDrawn = document.querySelector('.country--drawn');
 const btnCapital = document.querySelectorAll('.capital-chosen--item'); // retorna um NodeList
 const btnNext = document.querySelector('.btn-next');
+
 let upPointScore = Number(document.querySelector('.right').textContent);
 let downPointScore = Number(document.querySelector('.wrong').textContent);
 
@@ -287,35 +288,42 @@ const sorteioPais = async () => {
   const countryCapital = myJson[0].capital[0];
   const countryFlag = myJson[0].flags.svg;
 
-  //JSON com 4 países sorteado
+  document.getElementById('flag').src = countryFlag;
+
+  //JSON com 4 países sorteados
   const myJson2 = await arrCountriesDrawn.json();
 
   for (let i = 0; i < myJson2.length; i++) {
     btnCapital[i].textContent = myJson2[i].capital;
   }
-
   // envia o país sorteado para o HTML
   contryDrawn.textContent = countryDrawName;
 
   for (let i = 0; i < btnCapital.length; i++) {
     btnCapital[i].addEventListener('click', function () {
       if (btnCapital[i].textContent === countryCapital) {
-        document.querySelector('body').style.backgroundColor = '#60b347';
-        upPointScore++;
-        document.querySelector('.right').textContent = upPointScore;
-        console.log(`ACERTOOU! É ${btnCapital[i].textContent}`);
+        rightPoint();
       } else {
-        console.log(`ERRROU. Não é ${btnCapital[i].textContent}`);
-        downPointScore++;
-        document.querySelector('.wrong').textContent = downPointScore;
+        wrongPoint();
       }
     });
   }
-  nextCountry();
 };
 sorteioPais();
 
-btnNext.addEventListener('click', function () {
-  sorteioPais();
+const rightPoint = function () {
+  document.querySelector('body').style.backgroundColor = '#60b347';
+  upPointScore++;
+  document.querySelector('.right').textContent = upPointScore;
+};
+
+const wrongPoint = function () {
+  document.querySelector('body').style.backgroundColor = '#F70000';
+
+  document.querySelector('.wrong').textContent = downPointScore;
+};
+
+const nextCountry = btnNext.addEventListener('click', function () {
   document.querySelector('body').style.backgroundColor = '#000';
+  sorteioPais();
 });
