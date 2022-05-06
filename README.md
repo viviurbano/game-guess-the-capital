@@ -1,3 +1,3 @@
 # baby-stacks
 
-[check out the website!](https://babystacks.tech)
+[check out Country quiz!](https://viviurbano.github.io/baby-stacks/capital-quiz.html)
