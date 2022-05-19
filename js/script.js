@@ -290,7 +290,7 @@ const sorteioPais = async () => {
 
   document.getElementById('flag').src = countryFlag;
 
-  //JSON com 4 países sorteados
+  //JSON com 4 países sorteados - para preencher os botões
   const myJson2 = await arrCountriesDrawn.json();
 
   for (let i = 0; i < myJson2.length; i++) {
@@ -312,15 +312,31 @@ const sorteioPais = async () => {
 sorteioPais();
 
 const rightPoint = function () {
-  document.querySelector('body').style.backgroundColor = '#60b347';
   upPointScore++;
   document.querySelector('.right').textContent = upPointScore;
+
+  //toast message
+  let toast = document.getElementById('toast');
+  toast.className = 'show';
+  toast.innerHTML = 'Right choice! 🎉🥳';
+  toast.style.backgroundColor = '#60b347';
+
+  setTimeout(function () {
+    toast.className = toast.className.replace('show', '');
+  }, 1000);
 };
 
 const wrongPoint = function () {
-  document.querySelector('body').style.backgroundColor = '#F70000';
-
   document.querySelector('.wrong').textContent = downPointScore;
+
+  //toast message
+  let toast = document.getElementById('toast');
+  toast.className = 'show';
+  toast.style.backgroundColor = '#f7000091';
+  toast.innerHTML = 'Wrong choice. Try again! 😑🥸';
+  setTimeout(function () {
+    toast.className = toast.className.replace('show', '');
+  }, 1000);
 };
 
 const nextCountry = btnNext.addEventListener('click', function () {
