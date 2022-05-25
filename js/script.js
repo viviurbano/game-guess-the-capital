@@ -336,7 +336,7 @@ const wrongPoint = function () {
   toast.innerHTML = 'Wrong choice. Try again! 😑🥸';
   setTimeout(function () {
     toast.className = toast.className.replace('show', '');
-  }, 1000);
+  }, 2000);
 };
 
 const nextCountry = btnNext.addEventListener('click', function () {
