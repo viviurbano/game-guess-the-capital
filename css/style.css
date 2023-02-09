@@ -112,8 +112,9 @@ h1 {
 #toast {
   visibility: hidden;
   min-width: 250px;
-  margin-left: -125px;
-  background-color: #ffd700;
+  /* margin-left: -125px; */
+  /* background-color: #ffd700; */
+  margin: 1rem;
   color: #fff;
   text-align: center;
   border-radius: 2px;

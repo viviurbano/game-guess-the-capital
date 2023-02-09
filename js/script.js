@@ -318,25 +318,24 @@ const rightPoint = function () {
   //toast message
   let toast = document.getElementById('toast');
   toast.className = 'show';
-  toast.innerHTML = 'Right choice! 🎉🥳';
+  toast.innerHTML = 'Right choice 🥳';
   toast.style.backgroundColor = '#60b347';
 
   setTimeout(function () {
     toast.className = toast.className.replace('show', '');
-  }, 1000);
+  }, 1800);
 };
 
 const wrongPoint = function () {
   document.querySelector('.wrong').textContent = downPointScore;
-
   //toast message
   let toast = document.getElementById('toast');
   toast.className = 'show';
   toast.style.backgroundColor = '#f7000091';
-  toast.innerHTML = 'Wrong choice. Try again! 😑🥸';
+  toast.innerHTML = 'Wrong choice 😑';
   setTimeout(function () {
     toast.className = toast.className.replace('show', '');
-  }, 2000);
+  }, 1800);
 };
 
 const nextCountry = btnNext.addEventListener('click', function () {
