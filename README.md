@@ -1,3 +1,3 @@
-# baby-stacks
+# Game Guess The Capital
 
-[check out Country quiz!](https://viviurbano.github.io/baby-stacks/capital-quiz.html)
+[check out Country quiz!](https://viviurbano.github.io/game-guess-the-capital/)
