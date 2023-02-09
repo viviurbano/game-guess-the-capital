@@ -340,6 +340,5 @@ const wrongPoint = function () {
 };
 
 const nextCountry = btnNext.addEventListener('click', function () {
-  document.querySelector('body').style.backgroundColor = '#000';
   sorteioPais();
 });

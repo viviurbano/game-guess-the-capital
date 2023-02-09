@@ -4,110 +4,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/index.css" />
-    <script src="js/script.js"></script>
-    <title>Baby stack</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Guess the capital</title>
   </head>
+
   <body>
-    <header class="main-header">
-      <img src="img/logo-dev.svg" class="logo" alt="" />
-      <nav class="nav">
-        <a href="#" class="btn">home</a>
-        <a href="#" class="btn">about me</a>
-        <a href="#" class="btn">services</a>
-        <a href="#" class="btn">blog</a>
-        <a href="#" class="btn">contact</a>
-      </nav>
-    </header>
-
-    <main>
-      <div class="container">
-        <a href="capital-quiz.html" target="_blank" class="el el-1"
-          >Capital quiz</a
-        >
-        <a href="#" target="_blank" class="el el-2">
-          Roll dice
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
-
-        <a href="#" target="_blank" class="el el-3">
-          Guess the number
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
-        <a href="#" target="_blank" class="el el-4">2048</a>
-        <a href="#" target="_blank" class="el el-5">
-          Pomodoro
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
-        <a href="#" target="_blank" class="el el-6">
-          Random
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
-        <a href="#" target="_blank" class="el el-7">
-          Recipe App
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
-        <a href="#" target="_blank" class="el el-8">
-          Guess the capital
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
-        <a href="#" target="_blank" class="el el-9">
-          Tic-tac-toe
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
-        <a href="#" target="_blank" class="el el-10">
-          Snake
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
-        <a href="#" target="_blank" class="el el-11">
-          Flashcard
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
-        <a href="#" target="_blank" class="el el-12">
-          Memory card
-          <img
-            src="img/comming-soon.svg"
-            class="comming-soon"
-            alt="comming-soon icon"
-          />
-        </a>
+    <section class="container">
+      <div class="country">
+        <h1>Guess the capital from</h1>
+        <div class="country--drawn"></div>
+        <img
+          src="https://flagcdn.com/cw.svg"
+          id="flag"
+          class="flag"
+          alt="flag of the country drawn"
+        />
       </div>
-    </main>
+
+      <div id="toast">m</div>
+      <div class="capital-chosen">
+        <button type="button" class="button capital-chosen--item">
+          Capital 1
+        </button>
+        <button type="button" class="button capital-chosen--item">
+          Capital 2
+        </button>
+        <button type="button" class="button capital-chosen--item">
+          Capital 3
+        </button>
+        <button type="button" class="button capital-chosen--item">
+          Capital 4
+        </button>
+      </div>
+      <div>
+        <button type="button" class="btn-next">Next country</button>
+      </div>
+      <div class="score">
+        <p>✅<span class="right">0</span> ⛔️<span class="wrong">0</span></p>
+      </div>
+    </section>
+    <script src="js/script.js"></script>
   </body>
 </html>
