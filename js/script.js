@@ -256,9 +256,6 @@ const contryDrawn = document.querySelector('.country--drawn');
 const btnCapital = document.querySelectorAll('.capital-chosen--item'); // retorna um NodeList
 const btnNext = document.querySelector('.btn-next');
 
-let upPointScore = Number(document.querySelector('.right').textContent);
-let downPointScore = Number(document.querySelector('.wrong').textContent);
-
 const sorteioPais = async () => {
   const arrayRandom = Array.from(
     { length: 4 },
@@ -270,7 +267,7 @@ const sorteioPais = async () => {
     'https://restcountries.com/v3.1/alpha?codes=' + arrayRandom[0]
   );
 
-  // ARRAY DE PAÍSES
+  // ARRAY DE PAÍSES SORTEADOS
   const arrCountriesDrawn = await fetch(
     'https://restcountries.com/v3.1/alpha?codes=' +
       arrayRandom[0] +
@@ -286,19 +283,18 @@ const sorteioPais = async () => {
   const myJson = await countryDrawn.json();
   const countryDrawName = myJson[0].name.common;
   const countryCapital = myJson[0].capital[0];
-  const countryFlag = myJson[0].flags.svg;
 
-  document.getElementById('flag').src = countryFlag;
+  // BANDEIRA DO PAÍS SORTEADO
+  document.getElementById('flag').src = myJson[0].flags.svg;
 
   //JSON com 4 países sorteados - para preencher os botões
   const myJson2 = await arrCountriesDrawn.json();
-
   for (let i = 0; i < myJson2.length; i++) {
     btnCapital[i].textContent = myJson2[i].capital;
   }
+
   // envia o país sorteado para o HTML
   contryDrawn.textContent = countryDrawName;
-
   for (let i = 0; i < btnCapital.length; i++) {
     btnCapital[i].addEventListener('click', function () {
       if (btnCapital[i].textContent === countryCapital) {
@@ -312,9 +308,6 @@ const sorteioPais = async () => {
 sorteioPais();
 
 const rightPoint = function () {
-  upPointScore++;
-  document.querySelector('.right').textContent = upPointScore;
-
   //toast message
   let toast = document.getElementById('toast');
   toast.className = 'show';
@@ -323,11 +316,10 @@ const rightPoint = function () {
 
   setTimeout(function () {
     toast.className = toast.className.replace('show', '');
-  }, 1800);
+  }, 3000);
 };
 
 const wrongPoint = function () {
-  document.querySelector('.wrong').textContent = downPointScore;
   //toast message
   let toast = document.getElementById('toast');
   toast.className = 'show';
@@ -335,9 +327,9 @@ const wrongPoint = function () {
   toast.innerHTML = 'Wrong choice 😑';
   setTimeout(function () {
     toast.className = toast.className.replace('show', '');
-  }, 1800);
+  }, 3000);
 };
 
-const nextCountry = btnNext.addEventListener('click', function () {
+btnNext.addEventListener('click', function () {
   sorteioPais();
 });
